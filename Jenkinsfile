@@ -25,8 +25,9 @@ pipeline {
         }
         stage('Plan Terraform Deployment') {
             steps {
-               // sh 'terraform plan'
-               sh 'terraform plan -var="AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" -var="AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"'
+               withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'Greeshma-terraform', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                }
+               sh 'terraform plan'
             }
         }
 
