@@ -23,7 +23,7 @@ pipeline {
                 sh 'terraform validate'
             }
         }
-        stage('Plan Terraform Deployment') {
+       /* stage('Plan Terraform Deployment') {
             steps {
                 withCredentials([
                     string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
@@ -34,7 +34,7 @@ pipeline {
             }
         }
 
-       /* stage('Apply Terraform Deployment') {
+        stage('Apply Terraform Deployment') {
             steps {
                 withCredentials([
                     string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
