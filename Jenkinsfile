@@ -23,7 +23,7 @@ pipeline {
                 sh 'terraform validate'
             }
         }
-       /* stage('Plan Terraform Deployment') {
+        stage('Plan Terraform Deployment') {
             steps {
                 withCredentials([
                     string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
@@ -43,7 +43,7 @@ pipeline {
                     sh 'terraform apply -auto-approve -var="AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" -var="AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"'
                 }
             }
-        }*/
+        }
         stage('Destroy Terraform Deployment') {
             steps {
                 input message: 'Are you sure you want to destroy the infrastructure?', ok: 'Destroy'
