@@ -44,5 +44,11 @@ pipeline {
                 }
             }
         }
+        stage('Destroy Terraform Deployment') {
+            steps {
+                input message: 'Are you sure you want to destroy the infrastructure?', ok: 'Destroy'
+                sh 'terraform destroy -auto-approve'
+            }
+        }
     }
 }
